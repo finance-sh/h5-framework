@@ -5,39 +5,53 @@
 import React from 'react';
 import './header.less';
 import $ from 'webpack-zepto';
-import Data from './data.json';
+const getNavUrl ='/mock/getNav'
 class Header extends React.Component {
     constructor() {
         super();
+         this.state = {
+            navContent: []
+          };
     }
     handleClick() {
         $('#nav-box').toggle();
-
-        var get =  function (url,fn){
-         var obj= new XMLHttpRequest();            
-          obj.open('GET',url,true);
-          obj.onreadystatechange = function(){
-              if (obj.readyState == 4 && obj.status == 200 || obj.status == 304) {
-                  fn.call(this, obj.responseText);  
-              }
-          };
-         obj.send(null);
-     }
-
-     get('/data',function(){
-       
-     })
-
-
+    }
+    getData(){
+           $.ajax({
+            url: getNavUrl,
+            data: {
+              
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: (data) => {
+               var that = this;
+               if(data.ret === 0){
+                   that.setState({
+                        navContent:data.content
+                   });
+               }else{
+               }
+            },
+            error: () => {
+  
+            },
+            complete: () => {
+                
+            }
+        })
+    }
+    componentDidMount() {
+       this.getData(); 
     }
     render() {
         let nav = (
         <div id="nav-box" className="nav-box" >
-            <ul>{
-        Data.map(function(item) {
-            return <li className="item" key={item.name}><a href={item.url}>{item.name}</a></li>
-        })
-        }</ul>
+           <ul>{
+              this.state.navContent.map(function(item) {
+                  return <li className="item" key={item.name}><a href={item.url}>{item.name}</a></li>
+              })
+            }</ul> 
          </div>
         );
         return (
