@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-
 //回调
 var readFile = function(realPath, callback) {
     fs.exists(realPath, function(exists) {

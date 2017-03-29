@@ -1,9 +1,9 @@
 var webpack = require('webpack');
-
+var path = require('path');
 module.exports = {
     entry: './src/page/index.jsx',
     output: {
-        path: './dist',
+        path: path.resolve(__dirname, './dist'),
         filename: 'index.js'
     },
     module: {
