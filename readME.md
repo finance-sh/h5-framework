@@ -8,3 +8,8 @@
 
 mock server 路由配置在`scripts/mockServer.js`中，参考接口配置示例。
 mock server默认端口是9999，可在`scripts/mockServer.js`中修改，同时修改`scripts/start.js`中`webpack-dev-server`中proxy的配置。
+
+
+自动编译
+node服务自动重启
+页面自动刷新

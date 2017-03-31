@@ -6,9 +6,9 @@ var mockConfig = [{
     "dataPath": "nav.json",
     "type": "get"
 }, {
-    "url": "/mock/getdata1",
-    "dataPath": "mock/getdata.json1",
-    "type": "post"
+    "url": "/qihang/index.php/Article/addCollect?userId=275&articleId=8",
+    "dataPath": "mock/getdata.json",
+    "type": "get"
 }, {
     "url": "/mock/data",
     "dataPath": "data.json",
